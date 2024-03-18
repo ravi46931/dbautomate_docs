@@ -1,0 +1,70 @@
+*{
+    text-align: justify;
+    font-family: "Poppins", sans-serif;
+
+}
+
+html{
+    margin-left: 320px;
+    margin-right: 320px;
+    background-color: #ebeeff;
+}
+
+#project-description{
+    text-align: center;
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: 30px;
+}
+
+th, td {
+    border: 2.3px dashed black;
+    padding: 8px;
+    text-align: left;
+    color: rgb(23, 24, 32);
+}
+
+pre{
+    background-color: #222316;
+      color: #abb2bf;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border-radius: 10px;
+}
+
+.message_pre{
+    background-color: #3e3072;
+}
+
+.output_pre{
+    background-color: #dcd0d0;
+}
+
+.button {
+    background-color: #3c42f3; 
+    border: none;
+    color: white;
+    padding: 10px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+  }
+
+.button:hover {
+    background-color: #1bcb24;
+  }
+  
+.button:active {
+    background-color: #0c8ff4;
+  }

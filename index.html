@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dbautomate</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <h1 id="project-description">Project Description</h1>
+    <h2 id="about">About</h2>
+    <p>
+        <strong>dbautomate</strong> is a Python package that provides flexible,
+        interactive and expressive data manipulation with databases. It designed
+        to make working with &quot;relational&quot; and &quot;non-relational&quot;
+        databases seamless, interactive and efficient, provides a flexible and
+        scalable solution for diverse data storage and retrievel needs.
+    </p>
+    <h2 id="table-of-contents">Table of Contents</h2>
+    <ul>
+        <li><a href="#main-features">Main Features</a></li>
+        <li><a href="#where-to-get-it">Where to get it</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
+        <li>
+            <a href="#how-to-use-it">How to use it</a>
+            <ul>
+                <li>
+                    <a href="#import-the-library-for-mysql">Import the library for MySQL</a>
+                </li>
+                <li>
+                    <a href="#create-an-instance-of-mysql-class">Create an instance of MySQL class</a>
+                </li>
+                <li>
+                    <a href="#connect-to-mysql-server">Connect to MySQL Server</a>
+                </li>
+                <li>
+                    <a href="#check-the-mysql-handler-object">Check the MySQL handler object</a>
+                </li>
+                <li>
+                    <a href="#execute-query-with-mysql">Execute query with MySQL</a>
+                </li>
+                <li>
+                    <a href="#to-insert-the-data-in-table">To insert the data in table</a>
+                </li>
+                <li>
+                    <a href="#to-save-the-data-of-the-table">To save the data of the table</a>
+                </li>
+                <li>
+                    <a href="#to-close-the-mysql-connection">To close the MySQL connection</a>
+                </li>
+                <li>
+                    <a href="#import-the-library-for-mongodb">Import the library for MongoDB</a>
+                </li>
+                <li>
+                    <a href="#create-an-instance-of-mongodb-class">Create an instance of MongoDB class</a>
+                </li>
+                <li>
+                    <a href="#get-the-client-of-mongodb">Get the client of MongoDB</a>
+                </li>
+                <li>
+                    <a href="#create-database-of-mongodb">Create database of MongoDB</a>
+                </li>
+                <li>
+                    <a href="#create-database-of-mongodb">Create collection of MongoDB</a>
+                </li>
+                <li>
+                    <a href="#to-insert-the-data-in-collection">To insert the data in collection</a>
+                </li>
+                <li>
+                    <a href="#to-find-the-data-of-the-collection">To find the data of the collection</a>
+                </li>
+                <li>
+                    <a href="#to-save-the-data-of-the-collection">To save the data of the collection</a>
+                </li>
+                <li>
+                    <a href="#to-delete-the-data-of-the-collection">To delete the data of the collection</a>
+                </li>
+                <li>
+                    <a href="#to-update-the-data-of-the-collection">To update the data of the collection</a>
+                </li>
+                <li>
+                    <a href="#to-close-the-mongo-client">To close the mongo client</a>
+                </li>
+                <li><a href="#functionality">Functionality</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#development">Development</a>
+            <ul>
+                <li><a href="#important-links">Important links</a></li>
+                <li><a href="#source-code">Source code</a></li>
+            </ul>
+        </li>
+    </ul>
+    <h2 id="main-features">Main Features</h2>
+    <p>
+        Here are some of the key features of <strong>dbautomate</strong> as
+        follows:<br />
+    </p>
+    <ul>
+        <li>
+            This <strong>dbautomate</strong> works with <strong>MongoDB</strong> as
+            well as <strong>MySQL</strong> databases.
+        </li>
+        <li>
+            When working with <strong>MySQL</strong>, it can executes any query, it
+            can insert multiple type of data, it can save the data as well.
+        </li>
+        <li>
+            When working with <strong>MongoDB</strong>, it creates
+            <em>database</em> and <em>collection</em>, data can be insert, find,
+            delete, and update as well, the data can be saved locally.
+        </li>
+    </ul>
+    <h2 id="where-to-get-it">Where to get it</h2>
+    <p>
+        The source code is currently hosted on <strong>GitHub</strong> at:
+        <a href="https://github.com/ravi46931/dbautomatepkg">https://github.com/ravi46931/dbautomatepkg</a>
+    </p>
+    <h2 id="installation">Installation</h2>
+    <p>Install via pip:</p>
+    <pre class="code_pre" tabindex="0">
+
+      <span style="color:#C678DD"># PyPI</span>
+      <span style="color:#ABB2BF">pip install dbautomate</span>
+  </pre>
+
+    <h2 id="dependencies">Dependencies</h2>
+    <p>
+        <strong>dbautomate</strong> supports Python3.8, Python3.9, python3.11.
+    </p>
+    <p>Installation requires:</p>
+    <ul>
+        <li>pymongo</li>
+        <li>pymongo[srv]</li>
+        <li>dnspython</li>
+        <li>pandas</li>
+        <li>numpy</li>
+        <li>termcolor</li>
+        <li>mysql-connector-python</li>
+        <li>prettytable</li>
+    </ul>
+    <h2 id="how-to-use-it">How to use it</h2>
+    <p>User guide to use <strong>MySQL</strong> database.</p>
+    <h3 id="import-the-library-for-mysql">1. Import the library for MySQL</h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+     <span style="color:#fea339">from</span><span style="color:#90dde4"> dbautomate</span><span style="color:#fea339"> import</span><span style="color:#90dde4"> mysqloperator</span></span>
+</code>
+</pre>
+
+    <h3 id="create-an-instance-of-mysql-class">
+        2. Create an instance of MySQL class
+    </h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#f4ff55">mysql_handler</span><span style="color:#a3bef8"> = </span><span style="color:#90dde4">mysqloperator.</span><span style="color:#6094fd">MySQL_connector</span><span style="color:#c4ca2d">()</span>
+</code>
+</pre>
+
+
+    <h3 id="connect-to-mysql-server">3. Connect to MySQL Server</h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#f4b222">config</span><span style="color:#a3bef8"> =</span><span style="color:#cd39fe"> {</span>
+            <span style="color:#55fff1">'host'</span><span style="color:#a3bef8"> :</span><span style="color:#aeff2b"> 'your_mysql_host'</span><span style="color:#39dafe">,</span>
+            <span style="color:#55fff1">'user'</span><span style="color:#a3bef8"> :</span><span style="color:#aeff2b"> 'your_mysql_user'</span><span style="color:#39dafe">,</span>
+            <span style="color:#55fff1">'password'</span><span style="color:#a3bef8"> :</span><span style="color:#aeff2b"> 'your_mysql_password'</span><span style="color:#39dafe">,</span>
+            <span style="color:#55fff1">'database'</span><span style="color:#a3bef8"> :</span><span style="color:#aeff2b"> 'your_database_name'</span>
+    <span style="color:#cd39fe"> }</span>
+    <span style="color:#f4b222"> conn</span><span style="color:#a3bef8"> = </span><span style="color:#f4ff55">mysql_handler</span><span style="color:#e70f0f">(</span><span style="color:#79c8fa"> config</span><span style="color:#39fec3">,</span><span style="color:#79c8fa"> attempts</span><span style="color:#7dfa79"> =</span><span style="color:#fa8479"> 3</span><span style="color:#39fec3">,</span><span style="color:#79c8fa"> delay</span><span style="color:#7dfa79"> =</span><span style="color:#fa8479"> 2</span><span style="color:#e70f0f">)</span>
+
+    <span style="color:#937f98"># attempts: Number of times it tries to connect the server in case of failure.</span>
+    <span style="color:#937f98"># delay: time after which next attempt will happen</span>
+    <span style="color:#937f98"># These two parameters are optional</span>
+</code>
+</pre>
+
+    <p>For successful connection it gives following message:<br /></p>
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen"> Connected successfully....</span>
+
+</pre>
+
+    <h3 id="check-the-mysql-handler-object">4. Check the MySQL handler object</h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+     <span style="color: rgb(96, 197, 255)">print</span><span style="color: rgb(252, 90, 31)">(</span><span style="color: #f4ff55">mysql_handler</span><span style="color: rgb(252, 90, 31)">)</span>
+</code>
+</pre>
+
+    <p><strong>Output</strong>:<br /></p>
+
+    <pre class="output_pre" tabindex="0">
+
+    <strong style="color: black">MySQLHandler Object -</strong><br />
+        <span style="color: black">Config:  </span><span style="color: blue">{&#39;host&#39; : &#39;your_mysql_host&#39;, &#39;user&#39; : &#39;your_mysql_user&#39;, &#39;password&#39; : &#39;your_mysql_password&#39;,</span>
+            <span style="color: blue">&#39;database&#39; : &#39;your_database_name&#39;}</span>
+        <span style="color: black">Connected:  </span><span style="color: blue">True</span>
+    </pre>
+
+    <h3 id="execute-query-with-mysql">5. Execute query with MySQL</h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+     <span style="color: #f4b222">query</span><span style="color:#a3bef8"> =</span><span style="color:#bffa61"> "</span><span style="color:#61faba">SELECT * FROM table_name</span><span style="color:#bffa61">"</span>
+     <span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">execute_query</span><span style="color: rgb(252, 90, 31)">(</span><span style="color:#f29232">query</span><span style="color: rgb(252, 90, 31)">)</span>
+</code>
+</pre>
+
+    <p>
+        It prints table along with successful execution message.<br />
+    </p>
+
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen"> Query executed successfully....</span>
+    </pre>
+
+
+    <pre class="output_pre" tabindex="0">
+        <table>
+            <tr>
+            <th>purchase_price</th>
+            <th>sale_price</th>
+            </tr>
+            <tr>
+            <td>8000</td>
+            <td>9505</td>
+            </tr>
+            <tr>
+            <td>8500</td>
+            <td>10105</td>
+            </tr>
+            <tr>
+            <td>7000</td>
+            <td>8505</td>
+            </tr>
+            <tr>
+            <td>10500</td>
+            <td>11505</td>
+            </tr>     
+        </table>
+</pre>
+
+    <h3 id="to-insert-the-data-in-table">6. To insert the data in table</h3>
+    <p>Insert single entry or multiple entries.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color: #f4b222">table_name</span><span style="color:#a3bef8"> =</span><span style="color:#5cda17"> '</span><span style="color:#15db36">cats</span><span style="color:#5cda17">'</span>
+    <span style="color: #f4b222">values</span><span style="color:#a3bef8"> =</span><span style="color:#17da7f"> [</span>
+    <span style="color: #a6c9ff">(</span><span style="color:#a3bef8">'</span><span style="color:#17da7f">Mena</span><span style="color:#a3bef8">'</span><span style="color:#b856d9">, </span><span style="color:#a6c9ff">10</span><span style="color: #a6c9ff">)</span><span style="color:#da1717">,</span>
+    <span style="color: #a6c9ff">(</span><span style="color:#a3bef8">'</span><span style="color:#17da7f">Lisa</span><span style="color:#a3bef8">'</span><span style="color:#b856d9">, </span><span style="color:#a6c9ff">13</span><span style="color: #a6c9ff">)</span>
+    <span style="color:#17da7f">]</span>
+    <span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">insert_data</span><span style="color: rgb(252, 90, 31)">(</span><span style="color:#f29232">table_name</span><span style="color:#d2f232">, </span><span style="color:#f29232">values</span><span style="color: rgb(252, 90, 31)">)</span>
+</code>
+</pre>
+
+    <p>
+        If you want to use different database to insert the data, you can achieve
+        this by mentioning the database.
+    </p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+     <span style="color: #f4b222">db_name</span><span style="color:#a3bef8"> =</span><span style="color:#5cda17"> '</span><span style="color:#15db36">book</span><span style="color:#5cda17">'</span>
+     <span style="color: #f4b222">table_name</span><span style="color:#a3bef8"> =</span><span style="color:#5cda17"> '</span><span style="color:#15db36">english_books</span><span style="color:#5cda17">'</span>
+     <span style="color: #f4b222">values</span><span style="color:#a3bef8"> =</span><span style="color:#17da7f"> [</span><span style="color:#f3eff2">....</span><span style="color:#17da7f">]</span>
+     <span></span>
+     <span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">insert_data</span><span style="color: rgb(252, 90, 31)">(</span><span style="color:#f29232">db_name</span><span style="color:#d2f232">, </span><span style="color:#f29232">table_name</span><span style="color:#d2f232">, </span><span style="color:#f29232">values</span><span style="color: rgb(252, 90, 31)">)</span>
+</code>
+</pre>
+
+    <h3 id="to-insert-the-data-from-files-in-table">7. To insert the data from files into table</h3>
+
+    <p>You can insert <strong>CSV</strong> file into the table as well.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code style="color: #abb2bf;">
+      <span style="color: #f4b222;">filepath</span><span style="color: #a3bef8">=</span><span style="color: #5cda17">'path/to/your/data.csv'</span>
+      <span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">bulk_insert</span><span style="color: rgb(252, 90, 31)">(</span><span style="color:#f29232">table_name</span><span style="color:#d2f232">, </span><span style="color:#f29232">filepath</span><span style="color: rgb(252, 90, 31)">)</span></span>
+        
+      <span style="color: #C678DD;"># Change the database as well</span>
+      <span style="color: #f4b222;">filepath</span><span style="color: #a3bef8">=</span><span style="color: #5cda17">'path/to/your/data.csv'</span>
+      <span style="color: #f4b222;">db_name</span><span style="color: #a3bef8">=</span><span style="color: #5cda17">'books'</span>
+      <span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">bulk_insert</span><span style="color: rgb(252, 90, 31)">(</span><span style="color:#f29232">table_name</span><span style="color:#d2f232">, </span><span style="color:#f29232">filepath</span><span style="color:#d2f232">, </span><span style="color:#f29232">db_name</span><span style="color: rgb(252, 90, 31)">)</span></span>
+</code>
+</pre>
+
+    <p>
+        1) If the first entry is <em style="color: #4639fe;">autoincrement</em> id, and you have not
+        provided that in your input data (aka &#39;values&#39; in above code) then
+        enter &#39;y&#39;, but if you have provided in your input data then enter
+        something else.<br />
+        2) If you are inserting the multiple entries then enter <em>y</em>.<br />
+        3) If you are inserting the single entry then enter <em>n</em>.<br />
+    </p>
+    <p>
+        A success message shows after successful insertion of the data.<br />
+    <pre class="message_pre" tabindex="0">
+
+      <span style="color: lightgreen">Inserted successfully....</span>
+    </pre>
+    </p>
+
+    <h3 id="to-save-the-data-of-the-table">8. To save the data of the table</h3>
+    <p>
+        To save the <em style="color: #464a1f;">table</em> locally from the current active
+        <em>database</em>.
+    </p>
+    <pre class="code_pre" tabindex="0">
+<code style="color: #abb2bf;">
+    <span style="color: #f4b222">table_name</span><span style="color:#a3bef8"> =</span><span style="color:#5cda17"> '</span><span style="color:#15db36">cats</span><span style="color:#5cda17">'</span>
+    <span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">save_data</span><span style="color: rgb(252, 90, 31)">(</span><span style="color:#f29232">table_name</span><span style="color: rgb(252, 90, 31)">)</span>
+</code>
+</pre>
+
+    <p>To save the data from the different <em>database</em>.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code style="color: #abb2bf;">
+    <span style="color: #f4b222">db_name</span><span style="color:#a3bef8"> =</span><span style="color:#5cda17"> '</span><span style="color:#15db36">books</span><span style="color:#5cda17">'</span>
+    <span style="color: #f4b222">table_name</span><span style="color:#a3bef8"> =</span><span style="color:#5cda17"> '</span><span style="color:#15db36">english_books</span><span style="color:#5cda17">'</span>
+    <span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">save_data</span><span style="color: rgb(252, 90, 31)">(</span><span style="color:#f29232">table_name</span><span style="color:#d2f232">, </span><span style="color:#f29232">db_name</span><span style="color: rgb(252, 90, 31)">)</span>
+</code>
+</pre>
+
+    <p>Prints the success message after the saving data.<br /></p>
+    <pre class="message_pre" tabindex="0">
+
+        Enter the filename: data.csv
+        <span style="color: lightgreen">File:</span><span style="color: rgb(181, 181, 240)"> &#39;data.csv&#39;</span><span style="color: lightgreen">saved successfully....</span>
+    </pre>
+
+
+    <h3 id="to-close-the-mysql-connection">9. To close the MySQL connection</h3>
+
+    <pre class="code_pre" tabindex="0">
+    <code>
+        <span class="line"><span style="color: #f4ff55">mysql_handler</span><span style="color:#a3bef8">.</span><span style="color:#6094fd">close_connection</span><span style="color: rgb(252, 90, 31)">(</span><span style="color: rgb(252, 90, 31)">)</span></span>
+    </code>
+</pre>
+
+
+    <p>
+        It prints successful connection close.<br />
+    <pre class="message_pre" tabindex="0">
+
+        <span style="color: darkgrey">MySQL connection closed.</span>
+        </pre>
+
+    </p>
+    <br>
+    <p>User guide to use <strong>MongoDB</strong> database.</p>
+    <h3 id="import-the-library-for-mongodb">1. Import the library for MongoDB</h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#fea339">from</span><span style="color:#90dde4"> dbautomate</span><span style="color:#fea339"> import</span><span style="color:#90dde4"> mongodboperator</span>
+</code>
+</pre>
+
+    <h3 id="create-an-instance-of-mongodb-class">
+        2. Create an instance of MongoDB class
+    </h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#f4ff55">mongo</span><span style="color:#a3bef8"> = </span><span style="color:#90dde4">mongodboperator.</span><span style="color:#6094fd">MongoDB_connector</span><span style="color:#c4ca2d">()</span>
+</code>
+</pre>
+
+
+    <h3 id="get-the-client-of-mongodb">3. Get the client of MongoDB</h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#fea339">uri</span><span style="color:#a3bef8"> = </span><span style="color:#45ca2d">"</span><span style="color:#6094fd">localhost:27017</span><span style="color:#45ca2d">"</span>
+    <span style="color:#fea339">client</span><span style="color:#a3bef8"> = </span><span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.get_mongo_client</span><span style="color:#d30d10">(</span><span style="color:#d0e230">uri</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>
+        A success message prints.<br />
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Connected to MongoDB Successfully....</span>
+        </pre>
+
+    </p>
+    <h3 id="create-database-of-mongodb">4. Create database of MongoDB</h3>
+    <p>Ensure you have already created with client.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#fea339">database_name</span><span style="color:#a3bef8"> = </span><span style="color:#45ca2d">"</span><span style="color:#6094fd">firstdb</span><span style="color:#45ca2d">"</span>
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.create_database</span><span style="color:#d30d10">(</span><span style="color:#d0e230">database_name</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>
+        After creating database it prints success message.<br />
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Database created successfully....</span>
+        </pre>
+
+    </p>
+    <h3 id="create-collection-of-mongodb">5. Create collection of mongoDB</h3>
+    <p>Ensure you have already created with client and database.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#fea339">collection_name</span><span style="color:#a3bef8"> = </span><span style="color:#45ca2d">"</span><span style="color:#6094fd">first</span><span style="color:#45ca2d">"</span>
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.create_collection</span><span style="color:#d30d10">(</span><span style="color:#d0e230">collection_name</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>
+        After creating collection it prints success message.<br />
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Collection created successfully....</span>
+        </pre>
+
+    </p>
+    <h3 id="to-insert-the-data-in-collection">
+        6. To insert the data in collection
+    </h3>
+    <p>You can insert single or multiple entries.</p>
+
+
+    <pre class="code_pre" tabindex="0">
+<code>
+     <span style="color:#e756ec"># Single Entry</span>
+     <span style="color:#fea339">single_entry</span><span style="color:#a3bef8"> = </span><span style="color:#e9b546">{</span><span style="color:#12ea27"> '</span><span style="color:#12caea">name</span><span style="color:#12ea27">' </span><span style="color:#bbed45">:</span><span style="color:#12ea27"> '</span><span style="color:#f755e4">abc</span><span style="color:#12ea27">'</span><span style="color:#ea2012">,</span><span style="color:#12ea27"> '</span><span style="color:#12caea">age</span><span style="color:#12ea27">'</span><span style="color:#bbed45"> : </span><span style="color:#f755e4">5</span><span style="color:#e9b546">}</span>
+     <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.insert_data</span><span style="color:#d30d10">(</span><span style="color:#d0e230">single_entry</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>
+        A success message prints.<br />
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Inserted successfully(Single entry)....</span>
+        </pre>
+
+    </p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#e756ec"># Multiple Entries</span>
+    <span style="color:#fea339">multiple_entries</span><span style="color:#a3bef8"> = </span><span>[</span><span style="color:#e9b546">{</span><span style="color:#12ea27"> '</span><span style="color:#12caea">name</span><span style="color:#12ea27">' </span><span style="color:#bbed45">:</span><span style="color:#12ea27"> '</span><span style="color:#f755e4">abc</span><span style="color:#12ea27">'</span><span style="color:#ea2012">,</span><span style="color:#12ea27"> '</span><span style="color:#12caea">age</span><span style="color:#12ea27">'</span><span style="color:#bbed45"> : </span><span style="color:#f755e4">5</span><span style="color:#e9b546">}</span><span>, </span><span style="color:#e9b546">{</span><span style="color:#12ea27"> '</span><span style="color:#12caea">name</span><span style="color:#12ea27">' </span><span style="color:#bbed45">:</span><span style="color:#12ea27"> '</span><span style="color:#f755e4">pqr</span><span style="color:#12ea27">'</span><span style="color:#ea2012">,</span><span style="color:#12ea27"> '</span><span style="color:#12caea">age</span><span style="color:#12ea27">'</span><span style="color:#bbed45"> : </span><span style="color:#f755e4">8</span><span style="color:#e9b546">}</span><span>]
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.insert_data</span><span style="color:#d30d10">(</span><span style="color:#d0e230">multiple_entries</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>
+        A success message prints.<br />
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Data inserted successfully....</span>
+        </pre>
+
+    </p>
+    <p>
+        If you want to insert data from the <strong>CSV</strong>,
+        <strong>EXCEL</strong> or <strong>JSON</strong> file, you can achieve this
+        by following way.
+    </p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#e756ec"># To insert the data in the active collection</span>
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.bulk_insert</span><span style="color:#d30d10">(</span><span style="color:#d0e230">filepath</span><span style="color:#d30d10">)</span>
+    
+    <span style="color:#e756ec"># To insert the data in a new or different collection</span>
+    <span style="color:#fea339">collection_name</span><span style="color:#a3bef8"> = </span><span style="color:#45ca2d">"</span><span style="color:#6094fd">employee</span><span style="color:#45ca2d">"</span>
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.bulk_insert</span><span style="color:#d30d10">(</span><span style="color:#d0e230">filepath</span><span>, </span><span style="color:#d0e230">collection_name</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>
+        A success message prints.<br />
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Data inserted successfully....</span>
+        </pre>
+    </p>
+    <h3 id="to-find-the-data-of-the-collection">
+        7. To find the data of the collection
+    </h3>
+    <p>You can find the data.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.find_data</span><span style="color:#d30d10">()</span>
+</code>
+</pre>
+
+    <p>
+        1) If you want to see the data in the form of DataFrame enter <em style="color: green;">y</em>.<br>
+        2) If you want to see the data in the form of List enter <em style="color: red;">n</em>.
+    </p>
+    <h3 id="to-save-the-data-of-the-collection">
+        8. To save the data of the collection
+    </h3>
+    <p>You can save the data locally.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.save_data</span><span style="color:#d30d10">()</span>
+</code>
+</pre>
+
+    <p>
+        Enter the type of the file and name of the file (that you want to save).
+    </p>
+    <pre class="output_pre" tabindex="0">
+
+    <span style="color: #361515;">Do you want to save the data as json file or csv file?(json/csv)</span><span style="color: #8c1ddb;"> json</span>
+    <span style="color: #361515;">Enter the filename: </span><span style="color: #4d39fe;">data.json</span>
+    </pre>
+
+
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">File: </span><span style="color: rgb(187, 201, 248)">&#39;data.json&#39; </span><span style="color: lightgreen">saved successfully....</span>
+     </pre>
+
+    <h3 id="to-delete-the-data-of-the-collection">
+        9. To delete the data of the collection
+    </h3>
+    <p>For deleting the entire data from the collection.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.delete_data</span><span style="color:#d30d10">()</span>
+</code>
+</pre>
+
+    <ul>
+        <li>Enter <em>y</em> if you want to delete the entire data.</li>
+        <li>
+            It will delete entire data, Do you want to delete the data?(y/n):
+            <em style="color: green;">y</em>
+        </li>
+    </ul>
+
+    <pre class="message_pre" style="background-color: #89c5fa;" tabindex="0">
+
+    <span style="color: rgb(255, 0, 0); font-size: large;">All entry deleted</span>
+
+</pre>
+
+    <p>For delete the data based on the key value.</p>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#fea339">key_value</span><span style="color:#a3bef8"> = </span><span style="color:#e9b546">{</span><span style="color:#12ea27"> '</span><span style="color:#12caea">age</span><span style="color:#12ea27">'</span><span style="color:#bbed45"> : </span><span style="color:#f755e4">5</span><span style="color:#e9b546">}
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.delete_data</span><span style="color:#d30d10">(</span><span style="color:#d0e230">key_value</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>
+        Enter <em style="color: magenta;">one</em> if you want to delete the one entry else
+        <em style="color: magenta;">many</em> it delete all the entry based on the <em>key_value</em>
+    </p>
+
+    <pre class="output_pre" tabindex="0">
+
+    <span style="color: #361515;">Do you want delete the one entry or mutiple entries?(one/many)</span><span style="color: #9c27f0;"> one</span>
+    </pre>
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Entry deleted successfully</span>
+    </pre>
+
+    <p>
+        If you choose <em style="color: magenta;">many</em> option then the following message will show
+    </p>
+
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Multiple entries deleted successfully</span>
+
+</pre>
+
+    <h3 id="to-update-the-data-of-the-collection">
+        10. To update the data of the collection
+    </h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span style="color:#fea339">filter_criteria</span><span style="color:#a3bef8"> = </span><span style="color:#e9b546">{</span><span style="color:#12ea27"> '</span><span style="color:#12caea">age</span><span style="color:#12ea27">'</span><span style="color:#bbed45"> : </span><span style="color:#f755e4">13</span><span style="color:#e9b546">}
+    <span style="color:#fea339">update_data</span><span style="color:#a3bef8"> = </span>[<span style="color: blanchedalmond;">{</span> <span>'</span> <span>$set</span> <span>'</span> <span>: </span><span style="color:#e9b546">{</span><span style="color:#12ea27"> '</span><span style="color:#12caea">age</span><span style="color:#12ea27">'</span><span style="color:#bbed45"> : </span><span style="color:#f755e4">17</span><span style="color:#e9b546">}</span><span style="color: blanchedalmond;">}</span>]
+    <span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.update_data_entry</span><span style="color:#d30d10">(</span><span style="color:#d0e230">filter_criteria</span><span>, </span><span style="color:#d0e230">update_data</span><span style="color:#d30d10">)</span>
+</code>
+</pre>
+
+    <p>Enter <em style="color: green;">one</em> if you want to update the single entry.</p>
+
+    <pre class="output_pre" tabindex="0">
+
+    <span style="color: #361515;">Do you want single entry update on multiple?(one/many)</span><span style="color: #9922ed;"> one</span>
+    </pre>
+
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Updated Successfully (one entry)...</span>
+    </pre>
+
+    <p>Enter <em style="color: green;">many</em> if you want to update the multiple entries.</p>
+    <pre class="message_pre" tabindex="0">
+
+    <span style="color: lightgreen">Updated Successfully (multiple entries)....</span>
+
+</pre>
+
+
+    <h3 id="to-close-the-mongo-client">11. To close the mongo client</h3>
+
+    <pre class="code_pre" tabindex="0">
+<code>
+    <span class="line"><span style="color:#f4ff55">mongo</span><span style="color:#90dde4">.close_mongo_client</span><span style="color:#d30d10">()</span></span>
+</code>
+</pre>
+
+    <p>
+        After successful closing the client.<br />
+    </p>
+
+    <pre class="message_pre" tabindex="0">
+
+     <span style="color: rgb(236, 187, 236)">MongoDB client closed successfully..</span>
+    </pre>
+
+    <h3 id="functionality">Functionality</h3>
+    <p>For more detail of each of the functions can be reed the docstrings</p>
+
+    <pre class="code_pre" tabindex="0">
+
+        <span style="color: rgb(255, 166, 0)">print</span>(<span style="color: #cbea2f;">mysql_handler</span><span style="color: #39d3fe;">.insert_data</span><span>.__doc__</span>)
+    </pre>
+
+
+    <h2 id="development">Development</h2>
+    <h3 id="important-links">Important links</h3>
+    <ul>
+        <li>
+            Source code repo:
+            <a href="https://github.com/ravi46931/dbautomatepkg">GitHub Link</a>
+        </li>
+        <li>
+            Download Release:
+            <a href="https://pypi.org/project/dbautomate/">Pypi</a>
+        </li>
+        <li>
+            Bugs/ Feature requests:
+            <a href="https://github.com/ravi46931/dbautomatepkg/issues">GitHub issue Tracker</a>
+        </li>
+    </ul>
+    <h3 id="source-code">Source code</h3>
+    <p>You can check the latest sources with the command:</p>
+    <a href="https://github.com/ravi46931/dbautomatepkg.git">https://github.com/ravi46931/dbautomatepkg.git</a>
+
+    <h3 class="contributor">Contributor</h3>
+    <ul>
+        <li>Ravi Kumar</li>
+    </ul>
+    <p><a href="#table-of-contents" class="button">Go to top</a></p>
+</body>
+
+</html>
